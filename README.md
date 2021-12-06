@@ -1,5 +1,7 @@
 # URP Volumetric Lighting
 
+![Volumetric Light Scattering](./Pictures~/Volumetric%20Light%20Scattering.png)
+
 This package's goal is to provide full volumetric solution for the Universal Render Pipeline. Currently, it only supports *Volumetric Light Scattering* for directional light.
 
 ## Plan

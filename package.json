@@ -1,6 +1,6 @@
 {
   "name": "voxell.urp.volumetriclighting",
-  "displayName": "VX Volumetric Lighting",
+  "displayName": "VX URP Volumetric Lighting",
   "author": "Nixon",
   "description": "Volumetric Lighting in URP. (Currently only supports volumetric light scattering for directional light)",
   "keywords": [
