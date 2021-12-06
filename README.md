@@ -1,13 +1,8 @@
 # URP Volumetric Lighting
 
-![Volumetric Light Scattering](./Pictures~/Volumetric%20Light%20Scattering.png)
+![Volumetric Light Scattering](./Pictures~/VolumetricLightScattering.png)
 
 This package's goal is to provide full volumetric solution for the Universal Render Pipeline. Currently, it only supports *Volumetric Light Scattering* for directional light.
-
-## Plan
-
-- [x] Volumetric light scattering for directional light.
-- [ ] Volumetric fog for unlimited number of lights.
 
 
 - [URP Volumetric Lighting](#urp-volumetric-lighting)
@@ -17,6 +12,11 @@ This package's goal is to provide full volumetric solution for the Universal Ren
   - [Join the community!](#join-the-community)
   - [License](#license)
   - [References](#references)
+
+## Plan
+
+- [x] Volumetric light scattering for directional light.
+- [ ] Volumetric fog for spot lights and point lights.
 
 ## Installation
 
@@ -42,7 +42,7 @@ This package's goal is to provide full volumetric solution for the Universal Ren
 
 ## License
 
-This repository as a whole is licensed under the GNU Public License, Version 3. Individual files may have a different, but compatible license.
+This repository as a whole is licensed under the Apache License 2.0. Individual files may have a different, but compatible license.
 
 See [license file](./LICENSE) for details.
 
