@@ -7,6 +7,7 @@ Shader "Hidden/RadialBlur"
     _BlurWidth ("Blur Width", Range(0, 1)) = 0.85
     _Intensity ("Intensity", Range(0, 1)) = 1
     _Center ("Center", Vector) = (0.5, 0.5, 0, 0)
+    _NumSamples ("Number of Samples", Range(50, 200)) = 100
 
     // noise
     _NoiseSpeed ("Noise Speed", Vector) = (0.5, 0.5, 0.0, 0.0)
@@ -26,7 +27,6 @@ Shader "Hidden/RadialBlur"
 
       #include "UnityCG.cginc"
       #include "./GradientNoise.hlsl"
-      #define NUM_SAMPLES 100
 
       struct appdata
       {
@@ -53,6 +53,7 @@ Shader "Hidden/RadialBlur"
       float _BlurWidth;
       float _Intensity;
       float4 _Center;
+      uint _NumSamples;
 
       // noise
       float2 _NoiseSpeed;
@@ -65,10 +66,10 @@ Shader "Hidden/RadialBlur"
         float2 texCoord = i.uv;
 
         float2 ray = texCoord - _Center.xy;
-        float denom = 1.0 / float(NUM_SAMPLES) * _BlurWidth;
+        float denom = 1.0 / float(_NumSamples) * _BlurWidth;
 
-        UNITY_UNROLL
-        for (int i=0; i < NUM_SAMPLES; i++)
+        // UNITY_UNROLL
+        for (int i=0; i < _NumSamples; i++)
         {
           float scale = 1.0f - float(i) * denom;
           fixed3 texCol = tex2D(_MainTex, (ray * scale) + _Center.xy).xyz;

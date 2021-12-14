@@ -20,6 +20,8 @@ namespace Voxell.VolumetricLighting
       public float blurWidth = 0.85f;
       [Range(0.0f, 0.2f)]
       public float fadeRange = 0.85f;
+      [Range(50, 200)]
+      public uint numSamples = 100;
 
       [Header("Noise Properties")]
       public float2 noiseSpeed = 0.5f;
@@ -126,6 +128,7 @@ namespace Voxell.VolumetricLighting
             sunPositionViewportSpace.x, sunPositionViewportSpace.y, 0.0f, 0.0f
           ));
           _radialBlurMaterial.SetFloat("_BlurWidth", _settings.blurWidth);
+          _radialBlurMaterial.SetFloat("_NumSamples", _settings.numSamples);
           _radialBlurMaterial.SetFloat("_Intensity", _settings.intensity * intensityFader);
 
           _radialBlurMaterial.SetVector("_NoiseSpeed", new float4(_settings.noiseSpeed, 0.0f, 0.0f));
