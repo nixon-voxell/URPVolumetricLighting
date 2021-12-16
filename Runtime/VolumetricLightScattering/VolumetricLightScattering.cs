@@ -34,9 +34,9 @@ namespace Voxell.VolumetricLighting
     {
       private readonly RenderTargetHandle _occluders = RenderTargetHandle.CameraTarget;
       private readonly VolumetricLightScatteringSettings _settings;
-      private readonly Material _occludersMaterial;
-      private readonly Material _radialBlurMaterial;
       private readonly List<ShaderTagId> _shaderTagIdList = new List<ShaderTagId>();
+      private Material _occludersMaterial;
+      private Material _radialBlurMaterial;
       private FilteringSettings _filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
       private RenderTargetIdentifier _cameraColorTargetIdent;
 
@@ -44,8 +44,6 @@ namespace Voxell.VolumetricLighting
       {
         _occluders.Init("_OccludersMap");
         _settings = settings;
-        _occludersMaterial = new Material(Shader.Find("Hidden/UnlitColor"));
-        _radialBlurMaterial = new Material(Shader.Find("Hidden/RadialBlur"));
 
         _shaderTagIdList.Add(new ShaderTagId("UniversalForward"));
         _shaderTagIdList.Add(new ShaderTagId("UniversalForwardOnly"));
@@ -87,7 +85,7 @@ namespace Voxell.VolumetricLighting
       // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
       public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
       {
-        if (!_occludersMaterial || !_radialBlurMaterial) return;
+        if (!_occludersMaterial || !_radialBlurMaterial) InitializeMaterials();
         if (RenderSettings.sun ==  null || !RenderSettings.sun.enabled) return;
 
         // get command buffer pool
@@ -144,26 +142,32 @@ namespace Voxell.VolumetricLighting
       {
         cmd.ReleaseTemporaryRT(_occluders.id);
       }
+
+      private void InitializeMaterials()
+      {
+        _occludersMaterial = new Material(Shader.Find("Hidden/UnlitColor"));
+        _radialBlurMaterial = new Material(Shader.Find("Hidden/RadialBlur"));
+      }
     }
 
-    LightScatteringPass m_ScriptablePass;
+    private LightScatteringPass _scriptablePass;
     public VolumetricLightScatteringSettings _settings =  new VolumetricLightScatteringSettings();
 
     /// <inheritdoc/>
     public override void Create()
     {
-      m_ScriptablePass = new LightScatteringPass(_settings);
+      _scriptablePass = new LightScatteringPass(_settings);
 
       // Configures where the render pass should be injected.
-      m_ScriptablePass.renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
+      _scriptablePass.renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
     }
 
     // Here you can inject one or multiple render passes in the renderer.
     // This method is called when setting up the renderer once per-camera.
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-      renderer.EnqueuePass(m_ScriptablePass);
-      m_ScriptablePass.SetCameraColorTarget(renderer.cameraColorTarget);
+      renderer.EnqueuePass(_scriptablePass);
+      _scriptablePass.SetCameraColorTarget(renderer.cameraColorTarget);
     }
   }
 }
