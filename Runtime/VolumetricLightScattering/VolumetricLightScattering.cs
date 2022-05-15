@@ -18,8 +18,8 @@ namespace Voxell.VolumetricLighting
       public float intensity = 1.0f;
       [Range(0.0f, 1.0f)]
       public float blurWidth = 0.85f;
-      [Range(0.0f, 0.2f)]
-      public float fadeRange = 0.85f;
+      [Range(0.0f, 0.5f)]
+      public float fadeRange = 0.2f;
       [Range(50, 200)]
       public uint numSamples = 100;
 
