@@ -87,7 +87,11 @@ namespace Voxell.VolumetricLighting
         float intensityFader = dotProd / _settings.fadeRange;
         intensityFader = Mathf.Clamp(intensityFader, 0.0f, 1.0f);
 
-        _radialBlurMaterial.SetColor("_Color", RenderSettings.sun.color);
+        Color sunColor = RenderSettings.sun.color;
+        if (RenderSettings.sun.useColorTemperature)
+          sunColor *= Mathf.CorrelatedColorTemperatureToRGB(RenderSettings.sun.colorTemperature);
+
+        _radialBlurMaterial.SetColor("_Color", sunColor);
         _radialBlurMaterial.SetVector("_Center", sunPositionViewportSpace);
         _radialBlurMaterial.SetFloat("_BlurWidth", _settings.blurWidth);
         _radialBlurMaterial.SetFloat("_NumSamples", _settings.numSamples);
