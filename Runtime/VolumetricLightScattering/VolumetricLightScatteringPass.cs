@@ -85,11 +85,15 @@ internal class VolumetricLightScatteringPass : ScriptableRenderPass
       float intensityFader = dotProd / _settings.fadeRange;
       intensityFader = Mathf.Clamp(intensityFader, 0.0f, 1.0f);
 
-      _radialBlurMaterial.SetColor("_Color", RenderSettings.sun.color);
+      Color finalSunColor = RenderSettings.sun.color;
+      if (RenderSettings.sun.useColorTemperature) {
+        finalSunColor *= Mathf.CorrelatedColorTemperatureToRGB(RenderSettings.sun.colorTemperature);
+      }
+      _radialBlurMaterial.SetColor("_Color", finalSunColor);
       _radialBlurMaterial.SetVector("_Center", sunPositionViewportSpace);
       _radialBlurMaterial.SetFloat("_BlurWidth", _settings.blurWidth);
       _radialBlurMaterial.SetFloat("_NumSamples", _settings.numSamples);
-      _radialBlurMaterial.SetFloat("_Intensity", _settings.intensity * intensityFader);
+      _radialBlurMaterial.SetFloat("_Intensity", _settings.intensity * intensityFader * RenderSettings.sun.intensity);
 
       _radialBlurMaterial.SetVector("_NoiseSpeed", _settings.noiseSpeed);
       _radialBlurMaterial.SetFloat("_NoiseScale", _settings.noiseScale);
