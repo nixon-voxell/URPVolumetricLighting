@@ -35,8 +35,12 @@ This package's goal is to provide full volumetric solution for the Universal Ren
 
 ## Join the community!
 
-<a href ="https://discord.gg/WDBnuNH" target="_blank">
-  <img src="https://gist.githubusercontent.com/nixon-voxell/e7ba303906080ffdf65b106f684801b5/raw/65b0338d5f4e82f700d3c9f14ec9fc62f3fd278e/JoinVXDiscord.svg" alt="discord" width="200px" height="200px"/>
+<a href ="https://discord.gg/Mhnyp6VYEQ" target="_blank">
+  <img src="https://gist.githubusercontent.com/nixon-voxell/e7ba303906080ffdf65b106f684801b5/raw/97c6dfce3459c0a2c2ea8e1b9593612346f3abfc/JoinVXDiscord.svg" alt="discord" width="200px" height="200px"/>
+</a>
+
+<a href ="https://discord.gg/X3ZucbxXFc" target="_blank">
+  <img src="https://gist.githubusercontent.com/nixon-voxell/e7ba303906080ffdf65b106f684801b5/raw/97c6dfce3459c0a2c2ea8e1b9593612346f3abfc/JoinVXGithubDiscord.svg" alt="discord" width="200px" height="200px"/>
 </a>
 
 
