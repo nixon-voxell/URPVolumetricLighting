@@ -36,7 +36,8 @@ namespace Voxell.VolumetricLighting
       this.renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
 
       this._occluderTarget = RTHandles.Alloc(
-        (int)(Screen.width*_settings.resolutionScale), (int)(Screen.height*_settings.resolutionScale),
+        Mathf.Max(1, (int)(Screen.width*_settings.resolutionScale)),
+        Mathf.Max(1, (int)(Screen.height*_settings.resolutionScale)),
         depthBufferBits: DepthBits.None
       );
     }
