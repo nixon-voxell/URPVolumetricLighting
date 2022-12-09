@@ -53,7 +53,7 @@ namespace Voxell.VolumetricLighting
       // Calling ConfigureInput with the ScriptableRenderPassInput.Color argument ensures
       // that the opaque texture is available to the Render Pass
       // _renderPass.ConfigureInput(ScriptableRenderPassInput.Color);
-      _renderPass.SetTarget(renderer.cameraColorTargetHandle);
+      this._renderPass.SetTarget(renderer.cameraColorTargetHandle);
     }
 
     protected override void Dispose(bool disposing)

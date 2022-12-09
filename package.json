@@ -9,7 +9,7 @@
     "voxell"
   ],
   "license": "Apache 2.0",
-  "unity": "2020.3",
+  "unity": "2021.1",
   "version": "1.0.0",
   "dependencies": {},
   "hideInEditor": false

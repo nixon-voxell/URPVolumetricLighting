@@ -4,6 +4,8 @@
 
 This package's goal is to provide full volumetric solution for the Universal Render Pipeline. Currently, it only supports *Volumetric Light Scattering* for directional light.
 
+*note: this package requires Unity 2021.1 or later.*
+
 
 - [URP Volumetric Lighting](#urp-volumetric-lighting)
   - [Plan](#plan)
