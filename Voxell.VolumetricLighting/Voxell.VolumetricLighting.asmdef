@@ -1,5 +1,5 @@
 {
-    "name": "VX.VolumetricLighting.Runtime",
+    "name": "Voxell.VolumetricLighting",
     "rootNamespace": "Voxell.VolumetricLighting",
     "references": [
         "GUID:d8b63aba1907145bea998dd612889d6b",
